@@ -1,0 +1,20 @@
+{
+  "name": "@matthewp/ask-sdk-helpers",
+  "version": "1.0.0",
+  "description": "Helper functions for use with the ask-sdk",
+  "main": "helpers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewp/ask-sdk-helpers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/matthewp/ask-sdk-helpers/issues"
+  },
+  "homepage": "https://github.com/matthewp/ask-sdk-helpers#readme"
+}
