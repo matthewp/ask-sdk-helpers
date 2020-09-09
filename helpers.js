@@ -19,6 +19,17 @@ exports.slot = (handlerInput, name) =>
 
 exports.locals = handlerInput => handlerInput.attributesManager.getRequestAttributes();
 
+exports.addToLocals = (handlerInput, key, value) => {
+  let attrs = handlerInput.attributesManager.getRequestAttributes();
+
+  if(typeof key === 'object') {
+    let values = key;
+    Object.assign(attrs, values);
+  } else {
+    Reflect.set(attrs, key, value);
+  }
+};
+
 exports.getUserId = handlerInput => Alexa.getUserId(handlerInput.requestEnvelope);
 
 exports.confirmationStatus = handlerInput => handlerInput.requestEnvelope.request.intent.confirmationStatus;
