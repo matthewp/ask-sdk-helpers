@@ -1,6 +1,6 @@
 {
   "name": "@matthewp/ask-sdk-helpers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Helper functions for use with the ask-sdk",
   "main": "helpers.js",
   "scripts": {
