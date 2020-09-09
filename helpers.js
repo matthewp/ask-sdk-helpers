@@ -3,9 +3,14 @@ const Alexa = require('ask-sdk-core');
 exports.isLaunchRequest = () => handlerInput => 
   Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
 
-exports.isIntentRequest = intentName => handlerInput =>
-  Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-    && Alexa.getIntentName(handlerInput.requestEnvelope) === intentName;
+const isAnyIntentRequest = handlerInput =>
+  Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest';
+
+const isIntentRequestMatching = intentName => handlerInput =>
+  isAnyIntentRequest(handlerInput) && Alexa.getIntentName(handlerInput.requestEnvelope) === intentName;
+
+exports.isIntentRequest = (intentName = null) =>
+  intentName === null ? isAnyIntentRequest : isIntentRequestMatching(intentName);
 
 exports.isResponseRequest = responseName => handlerInput =>
   Alexa.getRequestType(handlerInput.requestEnvelope) === 'Connections.Response'
