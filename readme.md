@@ -138,6 +138,36 @@ const AddTodoIntentHandler = {
 };
 ```
 
+### SSML
+
+Helpers for building advanced [SSML](https://developer.amazon.com/en-US/docs/alexa/custom-skills/speech-synthesis-markup-language-ssml-reference.html) speech patterns.
+
+```js
+const {
+  isIntentRequest,
+  speak,
+  pipeResponse,
+
+  ssml,
+  pause
+} = require('@matthewp/ask-sdk-helpers');
+
+const AnnounceIntentHandler = {
+  canHandle: isIntentRequest('AnnounceIntent'),
+  async handle(h) {
+    return pipeResponse(h)(
+      speak(
+        ssml(
+          'Today was a fantastic win for the home team.',
+          pause('3s'),
+          'They won with a score of 4 to 2.'
+        )
+      )
+    )
+  }
+}
+```
+
 ## License
 
 [BSD 2-Clause](https://opensource.org/licenses/BSD-2-Clause)
