@@ -74,10 +74,10 @@ exports.pipeResponse = handlerInput => (...fns) => {
   return builder.getResponse();
 };
 
-exports.speak = speakOutput => builder => builder.speak(speakOutput);
+exports.speak = speakOutput => builder => builder.speak(speakOutput.toString());
 
 exports.speakAndReprompt = (speakOutput, repromptOutput = speakOutput) => builder => 
-  builder.speak(speakOutput).reprompt(repromptOutput);
+  builder.speak(speakOutput.toString()).reprompt(repromptOutput.toString());
 
 exports.endSession = shouldEnd => builder => builder.withShouldEndSession(shouldEnd);
 
