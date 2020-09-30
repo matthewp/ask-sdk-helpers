@@ -7,7 +7,7 @@ const SSML = Object.freeze({
 
   toString() {
     if(this.fragment) {
-      return this.children.join('');
+      return this.children.join(' ');
     }
 
     let tag = this.tag;
@@ -17,7 +17,7 @@ const SSML = Object.freeze({
       let attrStr = attributes.map(([key, value]) => `${key}="${value}"`).join(' ')
       output += ' '  + attrStr;
     }
-    output += this.children.join('');
+    output += this.children.join(' ');
     if(this.selfClosing) {
       output += `/>`;
     } else {

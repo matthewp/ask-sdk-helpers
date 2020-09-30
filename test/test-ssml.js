@@ -14,7 +14,22 @@ SSML('break() gives a pause', () => {
     'one two'
   ).toString();
   
-  assert.equal(output, 'Testing<break time="2s"/>one two');
+  assert.equal(output, 'Testing <break time="2s"/> one two');
 });
+
+SSML('can nest helpers', () => {
+  let output = ssml(
+    'one',
+    pause('1s'),
+    'two'
+  );
+  output = ssml(
+    output,
+    'three',
+    ssml('four')
+  ).toString();
+  let expected = `one <break time="1s"/> two three four`;
+  assert.equal(output, expected);
+})
 
 SSML.run();
