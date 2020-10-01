@@ -81,6 +81,11 @@ exports.speakAndReprompt = (speakOutput, repromptOutput = speakOutput) => builde
 
 exports.endSession = shouldEnd => builder => builder.withShouldEndSession(shouldEnd);
 
+/* Display */
+exports.simpleCard = (title, content) => builder => builder.withSimpleCard(title, content);
+exports.standardCard = (title, content, smallImg, largeImg) => builder => builder.withStandardCard(title, content, smallImg, largeImg);
+exports.card = (...args) => args.length === 2 ? exports.simpleCard(...args) : exports.standardCard(...args);
+
 /* Conversations */
 exports.delegateToConversations = (utteranceSetName, slots = {}) => builder => {
   builder.addDirective({
